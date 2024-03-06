@@ -16,21 +16,25 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="testttt">
+    <meta name="description" content="架构篇数据目录🤥 表在文件系统中的表示 ​	😀 表结构（以innodb为例） 1234567表名.frm用于描述表结构的文件，是以二进制格式存储的。CREATE TABLE test(	c1 INT;    C2 VARCHAR(10));  ​	😀 系统表空间和独立表空间 123456表空间：用于存放表的数据和索引系统表空间：版本低时采用的策略，所有表的数据和索引都存放在此，大小为12M，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://example.com/2024/02/29/test/index.html">
+<meta property="og:title" content="MySQL架构篇">
+<meta property="og:url" content="http://example.com/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="testttt">
+<meta property="og:description" content="架构篇数据目录🤥 表在文件系统中的表示 ​	😀 表结构（以innodb为例） 1234567表名.frm用于描述表结构的文件，是以二进制格式存储的。CREATE TABLE test(	c1 INT;    C2 VARCHAR(10));  ​	😀 系统表空间和独立表空间 123456表空间：用于存放表的数据和索引系统表空间：版本低时采用的策略，所有表的数据和索引都存放在此，大小为12M，">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-02-29T08:52:11.000Z">
-<meta property="article:modified_time" content="2024-02-29T08:53:07.418Z">
+<meta property="og:image" content="http://example.com/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304172052923.png">
+<meta property="og:image" content="http://example.com/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304172159984.png">
+<meta property="og:image" content="http://example.com/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304204224911.png">
+<meta property="article:published_time" content="2024-03-06T03:20:47.000Z">
+<meta property="article:modified_time" content="2024-03-06T12:44:31.901Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304172052923.png">
   
   
   
-  <title>test - Hexo</title>
+  <title>MySQL架构篇 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -94,7 +98,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>Hexo</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -106,66 +110,6 @@
     <!-- Collapsible content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
-                <i class="iconfont icon-home-fill"></i>
-                <span>首页</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
-                <i class="iconfont icon-archive-fill"></i>
-                <span>归档</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
-                <i class="iconfont icon-category-fill"></i>
-                <span>分类</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
-                <i class="iconfont icon-tags-fill"></i>
-                <span>标签</span>
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
-                <i class="iconfont icon-user-fill"></i>
-                <span>关于</span>
-              </a>
-            </li>
-          
         
         
           <li class="nav-item" id="search-btn">
@@ -196,7 +140,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="test"></span>
+            <span id="subtitle" data-typed-text="MySQL架构篇"></span>
           
         </div>
 
@@ -207,8 +151,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-02-29 16:52" pubdate>
-          2024年2月29日 下午
+        <time datetime="2024-03-06 11:20" pubdate>
+          2024年3月6日 上午
         </time>
       </span>
     
@@ -219,7 +163,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1 字
+          836 字
         
       </span>
     
@@ -230,7 +174,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -267,12 +211,49 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">test</h1>
+            <h1 id="seo-header">MySQL架构篇</h1>
             
             
               <div class="markdown-body">
                 
-                <p>testttt</p>
+                <h2 id="架构篇"><a href="#架构篇" class="headerlink" title="架构篇"></a>架构篇</h2><h3 id="数据目录"><a href="#数据目录" class="headerlink" title="数据目录"></a>数据目录</h3><p>🤥 <strong>表在文件系统中的表示</strong></p>
+<p>​	😀 <strong>表结构（以innodb为例）</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs mysql">表名.frm<br>用于描述表结构的文件，是以二进制格式存储的。<br><br>CREATE TABLE test(<br>	c1 INT;<br>    C2 VARCHAR(10)<br>);<br></code></pre></td></tr></table></figure>
+
+<p>​	😀 <strong>系统表空间和独立表空间</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tex">表空间：用于存放表的数据和索引<br>系统表空间：版本低时采用的策略，所有表的数据和索引都存放在此，大小为12M，且可拓展。文件表名通常为ibdata1。<br>独立表空间：每个表对应属于自个的表空间，文件格式为“表名.ibd”。<br><br>MySQL8.0中不再单独提供b.frm，二十合并在b.ibd文件中。<br>相比于innodb，myisam则是产生3个文件，除了b.frm(5.7)/b.xxx.sdi(8.0)还有b.MYD和b.MYI，分别存放数据和索引。<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="逻辑架构"><a href="#逻辑架构" class="headerlink" title="逻辑架构"></a>逻辑架构</h3><p>🤥 <strong>剖析逻辑架构</strong></p>
+<p><img src="/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304172052923.png" srcset="/img/loading.gif" lazyload></p>
+<p>​	😀 <strong>连接层</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs tex">访问MySQL服务器前，第一件事就是建立TCP链接。涉及到了三次握手（计网知识）。<br>TCP链接收到请求后，会分配给一个线程与这个客户端进行交互，所以还会有个线程池。<br>有了线程池，省去了创建和销毁的开销。<br></code></pre></td></tr></table></figure>
+
+<p>​	😀 <strong>服务层</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs tex">SQL Interface SQL接口 --&gt;  Parser 解析器--&gt;  Optimizer 查询优化器<br><br>SQL接口：接收SQL命令，并且返回查询结构。例如select * from xxx；<br><br>解析器：对SQL命令进行语法解析和语义解析，转换成数据结构，若在转换过程中发生错误，则代表SQL语句不合法。<br><br>查询优化器：语法解析之后、查询之前会使用查询优化器确定SQL的执行路径，生成一个 执行计划 。<br>执行计划会表明使用哪些 索引 进行查询，表之间连接顺序如何等等。例如有“选取-投影-连接”策略。<br>先进行where，再选择对应属性列，再进行表之间的连接。<br><br>查询缓存：缓存SQL查询结果，由于命中率低，在MySQL8.0中已删除。<br></code></pre></td></tr></table></figure>
+
+<p>​	😀 <strong>引擎层</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs tex">全称为插件式存储引擎层。真正负责数据的存储和提取，对物理服务器级别维护的底层数据执行操作，服务器通过API与存储引擎进行通信。<br>默认的MySQL的存储引擎为InnoDB，支持事务，行级锁，外键。<br></code></pre></td></tr></table></figure>
+
+<p>​	😀 <strong>存储层</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">所有的数据（表数据、索引，数据库信息等）都存在文件系统中。<br></code></pre></td></tr></table></figure>
+
+<p>🤥<strong>SQL执行流程</strong></p>
+<p><img src="/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304172159984.png" srcset="/img/loading.gif" lazyload alt="image-20240304172159984"></p>
+<p>​	😀 <strong>SQL执行流程文字描述</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tex">1. 建立CS通信连接<br>2. 查询缓存<br>3. 对SQL语句进行语法分析、语义分析，生成对应语法树（即为图中的语法解析和预处理）<br>4. 确定执行路径，生成执行计划，包括逻辑查询优化和物理查询优化。<br>5. 执行生成的执行计划<br></code></pre></td></tr></table></figure>
+
+<p>😀 <strong>SQL语法顺序</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">优化器会分析不同的执行顺序产生的性能消耗不同而动态调整执行顺序。下表是常见的查询顺序。<br></code></pre></td></tr></table></figure>
+
+<p><img src="/2024/03/06/MySQL%E6%9E%B6%E6%9E%84%E7%AF%87/image-20240304204224911.png" srcset="/img/loading.gif" lazyload alt="image-20240304204224911"></p>
+<p>😀 <strong>profiles、profiling、profile的使用</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs tex">使用profile可以查看SQL语句的详细执行步骤<br><br>有全局参数 profiling， 使用 select @@profiling ，即可查看。默认该功能关闭，可通过 set profiling = 1 进行设置。<br><br>使用 show profiles 可以查看当前会话所产生的最近几次查询<br><br></code></pre></td></tr></table></figure>
+
+<p>🤥<strong>数据库缓冲池</strong></p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs tex">略<br></code></pre></td></tr></table></figure>
+
 
                 
               </div>
@@ -290,8 +271,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>test</div>
-      <div>http://example.com/2024/02/29/test/</div>
+      <div>MySQL架构篇</div>
+      <div>http://example.com/2024/03/06/MySQL架构篇/</div>
     </div>
     <div class="license-meta">
       
@@ -303,7 +284,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年2月29日</div>
+          <div>2024年3月6日</div>
         </div>
       
       
@@ -335,18 +316,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/03/03/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="MarkDown基本语法">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MarkDown基本语法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/02/29/hello-world/" title="Hello World">
-                        <span class="hidden-mobile">Hello World</span>
+                      <a href="/2024/03/03/MarkDown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/" title="MarkDown基本语法">
+                        <span class="hidden-mobile">MarkDown基本语法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
