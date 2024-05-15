@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="JavaLearn514Object类 getClass   navtive方法，获取该对象的Class对象，Class对象就是字节码文件，保存在堆中。 hashCode   native方法，主要作用就是获得该对象的哈希值，哈希算法就是一种将数据转换为固定大小输出值的算法，例如String类中的hashCode就重写了，具体算法是依次遍历每个字符，初始h为0， h &#x3D; h * 31 +">
+    <meta name="description" content="IO流 字节流和字符流：字节流，以Input&#x2F;OutputStream为结尾的类，适合处理二进制数据。字符流，以Writer&#x2F;Reader为结尾的类。适合处理文本数据。 读入流和写出流：读和写一般是基于内存来解释的，将数据转移到内存即是读入，从文件、键盘（看作文件）读到内存。将数据转移出内存即是写出，一般写出到文件、屏幕（看作文件）。 文件流&#x2F;数据流&#x2F;对象流">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaLearn(1)">
-<meta property="og:url" content="http://example.com/2024/05/14/JavaLearning514/index.html">
+<meta property="og:title" content="JavaLearn(2)">
+<meta property="og:url" content="http://example.com/2024/05/15/JavaLearn515/index.html">
 <meta property="og:site_name" content="JokKerLi">
-<meta property="og:description" content="JavaLearn514Object类 getClass   navtive方法，获取该对象的Class对象，Class对象就是字节码文件，保存在堆中。 hashCode   native方法，主要作用就是获得该对象的哈希值，哈希算法就是一种将数据转换为固定大小输出值的算法，例如String类中的hashCode就重写了，具体算法是依次遍历每个字符，初始h为0， h &#x3D; h * 31 +">
+<meta property="og:description" content="IO流 字节流和字符流：字节流，以Input&#x2F;OutputStream为结尾的类，适合处理二进制数据。字符流，以Writer&#x2F;Reader为结尾的类。适合处理文本数据。 读入流和写出流：读和写一般是基于内存来解释的，将数据转移到内存即是读入，从文件、键盘（看作文件）读到内存。将数据转移出内存即是写出，一般写出到文件、屏幕（看作文件）。 文件流&#x2F;数据流&#x2F;对象流">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-14T14:55:20.000Z">
-<meta property="article:modified_time" content="2024-05-14T14:54:10.981Z">
+<meta property="article:published_time" content="2024-05-15T08:36:01.000Z">
+<meta property="article:modified_time" content="2024-05-15T08:37:20.695Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>JavaLearn(1) - JokKerLi</title>
+  <title>JavaLearn(2) - JokKerLi</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -136,7 +136,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="JavaLearn(1)"></span>
+            <span id="subtitle" data-typed-text="JavaLearn(2)"></span>
           
         </div>
 
@@ -147,8 +147,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-14 22:55" pubdate>
-          2024年5月14日 晚上
+        <time datetime="2024-05-15 16:36" pubdate>
+          2024年5月15日 下午
         </time>
       </span>
     
@@ -159,7 +159,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          905 字
         
       </span>
     
@@ -170,7 +170,7 @@
         
         
         
-          16 分钟
+          8 分钟
         
       </span>
     
@@ -207,49 +207,64 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">JavaLearn(1)</h1>
+            <h1 id="seo-header">JavaLearn(2)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="JavaLearn514"><a href="#JavaLearn514" class="headerlink" title="JavaLearn514"></a>JavaLearn514</h1><h2 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h2><ol>
-<li><strong>getClass</strong>   navtive方法，获取该对象的Class对象，Class对象就是字节码文件，保存在堆中。</li>
-<li><strong>hashCode</strong>   native方法，主要作用就是获得该对象的哈希值，哈希算法就是一种将数据转换为固定大小输出值的算法，例如String类中的hashCode就重写了，具体算法是依次遍历每个字符，初始h为0， h &#x3D; h * 31 + value[i] 。为什么是31，因为31是是一个奇质数，质数能减少哈希碰撞的概率，而且31比较好计算，左移五位后再删除自身。</li>
-<li><strong>equals</strong>   用于比较两个对象，未重写即是 <code>this == obj</code> 的形式，比较两个对象的引用地址。子类需要比较时一般要重写这个方法。</li>
-<li><strong>clone</strong> native方法，实现对象的浅拷贝。只有实现了Cloneable接口才可以调用该方法。否则会抛出CloneNotSupportException异常。浅拷贝和深拷贝是复制对象时的两种不同策略。浅拷贝创建的是一个新对象，这个新对象拥有和原始对象相同的属性值。如果是基本数据类型，则复制属性值，如果是引用数据类型，则会复制该属性指向的内存地址，而不是该属性指向的实际对象。深拷贝则是会递归的复制一个原始对象的所有引用对象。</li>
-<li><strong>toString</strong> 返回一个String对象，一般子类都有覆盖。默认返回格式如下：<code>getClass().getName() + &quot;@&quot; + Integer.toHexString(hashCode())</code>。</li>
-<li><strong>wait</strong>(time) 将该线程暂停，放弃当前持有的锁，进入的对应的对象锁的监视器的等待集中。  </li>
-<li><strong>notify</strong> 用于唤醒在该对象上等待的某个线程。用于唤醒在该对象的监视器的等待集里头的线程</li>
-<li><strong>finalize</strong> 该方法是保护方法，主要用于在GC的时候再次被调用，如果我们实现了这个方法，对象可能在这个方法中再次复活，从而避免被GC回收。</li>
+                <h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><ol>
+<li><strong>字节流和字符流</strong>：字节流，以Input&#x2F;OutputStream为结尾的类，适合处理二进制数据。字符流，以Writer&#x2F;Reader为结尾的类。适合处理文本数据。</li>
+<li><strong>读入流和写出流</strong>：读和写一般是<strong>基于内存</strong>来解释的，将数据转移到内存即是读入，从文件、键盘（看作文件）读到内存。将数据转移出内存即是写出，一般写出到文件、屏幕（看作文件）。</li>
+<li><strong>文件流&#x2F;数据流&#x2F;对象流</strong>：以File&#x2F;Data&#x2F;Object开头的类。</li>
+<li><strong>缓冲流</strong>：以Bufferd开头的类，用于提高读写操作的效率。底层是通过一个buffer数组实现的。</li>
+<li><strong>转换流</strong>：用来在字节流和字符流之间进行转换的。InputStreamReader实现在字节流到字符流的转换，OutputStreamWriter实现在字符流到字节流的转换。传输时使用二进制传输，在编码时使用字符形式显示。</li>
 </ol>
-<h2 id="Thread的方法"><a href="#Thread的方法" class="headerlink" title="Thread的方法"></a>Thread的方法</h2><ol>
-<li><strong>start</strong> 实例方法，java虚拟机调用此线程的run方法</li>
-<li><strong>sleep</strong> 使当前正在执行的线程暂停执行指定的时间，以让其他线程执行</li>
-<li><strong>yield</strong> 暗示调度器当前线程愿意让出当前的CPU资源</li>
-<li><strong>join</strong> 实例方法，加入的意思，等待这个线程终止。一般是在一个线程调用另一个线程，使其加入，即执行加入的线程先。</li>
-<li><strong>interrupt</strong> 实例方法，用于中断线程</li>
-<li><strong>stop</strong> 强制终止线程，已弃用，不安全</li>
-<li><strong>currentThead</strong> 返回对当前正在执行的线程对象的引用</li>
-<li><strong>getName getId getpriority getState</strong> 返回线程名称 标识符 优先级 状态，也有对应的set方法</li>
+<h3 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h3><ol>
+<li>一种高效且易于使用的处理数据的方式，强化了Java集合框架。不存储数据，不改变源数据，惰性执行，可以并行。其操作可以分为中间操作和终端操作。</li>
+<li><strong>中间操作</strong>：<ol>
+<li>filter(Predicate<T>)：过滤元素</T></li>
+<li>map(Fuction&lt;T,R&gt;)：映射每个元素对应的结果</li>
+<li>sorted(Comparator)：排序</li>
+<li>distinct()：去重</li>
+<li>limit(long maxSize)：截断</li>
 </ol>
-<h2 id="wait-和sleep-的区别"><a href="#wait-和sleep-的区别" class="headerlink" title="wait()和sleep()的区别"></a>wait()和sleep()的区别</h2><ol>
-<li>wait是Object的实例方法，每个对象都有这个方法，常用的就是直接wait()，表示执行当前方法的线程<strong>释放</strong>它持有的对象锁，进入到锁的等待集中，允许其他线程进入同步代码块或方法。需要在synchronized代码块或者wait方法中使用，否则会排除illegalMonitorStateException异常，因为要调用wait之前需要持有一个对象锁。需要通过notify()方法唤醒当前对象锁上等待的线程。平时一般都是在一个类中写这些方法，当前线程和对象都是同一个。</li>
-<li>sleep是Thread的静态方法，执行sleep()方法时它<strong>不会释放</strong>任何锁。可以在任何地方使用，不需要在同步代码块中。通常用于延迟执行，或者在特定的时间内让出CPU给其他线程执行。</li>
+</li>
+<li><strong>终端操作</strong>：<ol>
+<li>forEach(Consumer<T>)：迭代每个元素</T></li>
+<li>collect(collector&lt;T,A,R&gt;)：将流转换为其他形式</li>
+<li>count()：返回流中元素的个数</li>
+<li>reduce(BinaryOperator<T>)：通过各个连接操作将所有元素汇总成一个结果</T></li>
+<li>any&#x2F;all&#x2F;noneMatch(Predicate<T>)：匹配操作</T></li>
+<li>findFirst&#x2F;Any()：查找元素</li>
 </ol>
-<h2 id="synchronized和ReentrantLock的原理和区别"><a href="#synchronized和ReentrantLock的原理和区别" class="headerlink" title="synchronized和ReentrantLock的原理和区别"></a>synchronized和ReentrantLock的原理和区别</h2><ol>
-<li><p><strong>对象创建流程</strong>：通过new关键字创建对象时，一般是先检查对象对应的类是否已加载，未记载则执行对应的类加载（加载，链接（验证、准备、解析）、初始化），加载后分配内存，内存分配策略有指针碰撞和空闲列表两种方式。接着初始化零值，对属性赋值。<strong>设置对象头</strong>，执行 init 方法，也就是构造器方法，父类子类构造器合在一起。</p>
 </li>
-<li><p><strong>对象头信息</strong>：Mark Word（哈希码、GC代年龄、锁状态标志、线程持有的锁、偏向线程ID、偏向时间戳） 和类型指针（指向它的类元数据的指针）和数组长度。MarkWord的长度一般跟JVM的位数一致，例如JVM是64位，MarkWord就是64位。为了能使用更少的位数存放更多的信息，最低的2位的用来标志为锁的类型，根据锁的类型的不同，前面的位表示的信息也不同。例如当是重量级锁时前62位是ptr-to-heavyweight-monitor，表示指向monitor对象（也称为管程或监视器锁）的起始地址。</p>
+</ol>
+<h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><ol>
+<li><p>泛型的本质是参数化类型，即数据类型不确定，允许在编译时指定类、接口或者方法的中参数的类型（这种参数的类型不确定的参数叫做类型参数）。有泛型方法和泛型类两种。泛型就是为了可以实现处理多种类型，有时候还可以对参数类型进行限制，例如使用&lt;T extend &#x2F; super Number&gt;来实现。</p>
 </li>
-<li><p><strong>synchronized的原理</strong>：涉及JVM中的监视器锁或者对象锁机制,每个对象有对应的监视器monitor，也和对象的对象头信息有关。可以修饰方法和代码块，修饰时需要传递一个对象作为锁。当一个线程访问某个对象的synchronized方法时，他会自动获取这个方法所属对象的锁。</p>
+<li><p>泛型是通过类型擦除来实现的，类型擦除就是将所有的泛型类型参数替换掉，并且在必要的地方插入类型转换代码，以便程序可以正常运行。首先将类型擦除到其边界，extends擦除到其父类，无界和super则擦除到Object，这样之后就使用了Java的多态的机制。而在必要时将插入类型的转换，来保证类型的安全。</p>
 </li>
-<li><p><strong>监视器</strong>：用于实现线程之间的的互斥和协作。每个java对象都可以关联一个监视器，如果另一个线程视图进入使用同一个监视器锁保护的另一个同步代码段，它会被阻塞直到监视器被释放。监视器的实现通常包含以下几个部分：锁（Lock）、等待集（Wait Set）[线程调用wait()方法时它会被放入到监视器的等待集中，处于等待集中的线程不会竞争锁，而是等待被notify()或者notifyAll()方法唤醒]、计数器[]。</p>
+<li><p>泛型方法：</p>
+<ol>
+<li><T>声明在返回类型之前。</T></li>
+<li>可用来声明返回值类型，也可用来声明方法的传入参数的类型。</li>
+<li>类型参数只能代表引用类型，不能是基础类型（如：int，double）</li>
+</ol>
 </li>
-<li><p><strong>synchronized锁的状态</strong>：有多种状态，如无锁状态、偏向锁、轻量级锁和重量级锁。他们在不同情况下会通过CAS、自旋等方式及逆行锁状态转换，以提高同步的效率。</p>
+<li><p>泛型类：</p>
+<ol>
+<li><T>声明在类名之后。</T></li>
+</ol>
 </li>
-<li><p><strong>对象锁的状态变化</strong>： 一开始是无锁状态，当第一个线程尝试进入synchronized方法时，如果没有其他线程竞争该锁，则JVM会将对象头的Mark Word更新为偏向锁的状态。根据情况的不同，偏向锁升级为轻量级锁或者重量级锁。轻量级锁适用于多线程交替执行同步块的情况，而非同时竞争。重量级锁同时竞争同一把锁的情况。</p>
-</li>
-<li><p><strong>偏向锁的理解</strong>：偏向，就是倾向的意思，偏向锁即时偏向于第一个获取它的线程。在多线程的应用程序中，很多情况下锁往往是由一个线程多次连续获取，传统的锁机制（轻量级锁和重量级锁）每次在进入和退出临界区时都需要进行一些列复杂的同步操作。即使没有其他线程竞争该锁，这些操作在无竞争的情况下引入了不必要的性能开销。偏向锁就是为了优化这种情况而引入的。</p>
+</ol>
+<h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ol>
+<li>java5引入的<strong>元数据</strong>（meta data），它允许将信息和元数据添加到代码中，而不会直接影响代码的执行。被用来为代码提供额外的信息。可以在编译时、类加载时或者运行时被读取，并且可以影响到编译器、工具和库的行为。</li>
+<li><strong>元注解</strong>：<ol>
+<li>@Retention： 指定注解的保留策略，有SOUCRE（存在于源代码，例如@override）、CLASS（自定义注解.例如AOP)和RUNTIME（存在于运行时，spring框架中常用）</li>
+<li>Target：指定注解可以应用于Java元素类型，METHOD或者FIELD。</li>
+<li>Inherited：指定注解类型会被子类继承。</li>
+<li>@Documented：指示将次注解包含在javaDoc中。</li>
+</ol>
 </li>
 </ol>
 
@@ -269,8 +284,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>JavaLearn(1)</div>
-      <div>http://example.com/2024/05/14/JavaLearning514/</div>
+      <div>JavaLearn(2)</div>
+      <div>http://example.com/2024/05/15/JavaLearn515/</div>
     </div>
     <div class="license-meta">
       
@@ -282,7 +297,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月14日</div>
+          <div>2024年5月15日</div>
         </div>
       
       
@@ -314,18 +329,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/15/JavaLearn515/" title="JavaLearn(2)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">JavaLearn(2)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/03/07/Git/" title="Git">
-                        <span class="hidden-mobile">Git</span>
+                      <a href="/2024/05/14/JavaLearning514/" title="JavaLearn(1)">
+                        <span class="hidden-mobile">JavaLearn(1)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

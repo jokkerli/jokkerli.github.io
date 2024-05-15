@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>JavaLearn(2)</title>
+    <link href="/2024/05/15/JavaLearn515/"/>
+    <url>/2024/05/15/JavaLearn515/</url>
+    
+    <content type="html"><![CDATA[<h2 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h2><ol><li><strong>字节流和字符流</strong>：字节流，以Input&#x2F;OutputStream为结尾的类，适合处理二进制数据。字符流，以Writer&#x2F;Reader为结尾的类。适合处理文本数据。</li><li><strong>读入流和写出流</strong>：读和写一般是<strong>基于内存</strong>来解释的，将数据转移到内存即是读入，从文件、键盘（看作文件）读到内存。将数据转移出内存即是写出，一般写出到文件、屏幕（看作文件）。</li><li><strong>文件流&#x2F;数据流&#x2F;对象流</strong>：以File&#x2F;Data&#x2F;Object开头的类。</li><li><strong>缓冲流</strong>：以Bufferd开头的类，用于提高读写操作的效率。底层是通过一个buffer数组实现的。</li><li><strong>转换流</strong>：用来在字节流和字符流之间进行转换的。InputStreamReader实现在字节流到字符流的转换，OutputStreamWriter实现在字符流到字节流的转换。传输时使用二进制传输，在编码时使用字符形式显示。</li></ol><h3 id="Stream流"><a href="#Stream流" class="headerlink" title="Stream流"></a>Stream流</h3><ol><li>一种高效且易于使用的处理数据的方式，强化了Java集合框架。不存储数据，不改变源数据，惰性执行，可以并行。其操作可以分为中间操作和终端操作。</li><li><strong>中间操作</strong>：<ol><li>filter(Predicate<T>)：过滤元素</T></li><li>map(Fuction&lt;T,R&gt;)：映射每个元素对应的结果</li><li>sorted(Comparator)：排序</li><li>distinct()：去重</li><li>limit(long maxSize)：截断</li></ol></li><li><strong>终端操作</strong>：<ol><li>forEach(Consumer<T>)：迭代每个元素</T></li><li>collect(collector&lt;T,A,R&gt;)：将流转换为其他形式</li><li>count()：返回流中元素的个数</li><li>reduce(BinaryOperator<T>)：通过各个连接操作将所有元素汇总成一个结果</T></li><li>any&#x2F;all&#x2F;noneMatch(Predicate<T>)：匹配操作</T></li><li>findFirst&#x2F;Any()：查找元素</li></ol></li></ol><h2 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h2><ol><li><p>泛型的本质是参数化类型，即数据类型不确定，允许在编译时指定类、接口或者方法的中参数的类型（这种参数的类型不确定的参数叫做类型参数）。有泛型方法和泛型类两种。泛型就是为了可以实现处理多种类型，有时候还可以对参数类型进行限制，例如使用&lt;T extend &#x2F; super Number&gt;来实现。</p></li><li><p>泛型是通过类型擦除来实现的，类型擦除就是将所有的泛型类型参数替换掉，并且在必要的地方插入类型转换代码，以便程序可以正常运行。首先将类型擦除到其边界，extends擦除到其父类，无界和super则擦除到Object，这样之后就使用了Java的多态的机制。而在必要时将插入类型的转换，来保证类型的安全。</p></li><li><p>泛型方法：</p><ol><li><T>声明在返回类型之前。</T></li><li>可用来声明返回值类型，也可用来声明方法的传入参数的类型。</li><li>类型参数只能代表引用类型，不能是基础类型（如：int，double）</li></ol></li><li><p>泛型类：</p><ol><li><T>声明在类名之后。</T></li></ol></li></ol><h2 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h2><ol><li>java5引入的<strong>元数据</strong>（meta data），它允许将信息和元数据添加到代码中，而不会直接影响代码的执行。被用来为代码提供额外的信息。可以在编译时、类加载时或者运行时被读取，并且可以影响到编译器、工具和库的行为。</li><li><strong>元注解</strong>：<ol><li>@Retention： 指定注解的保留策略，有SOUCRE（存在于源代码，例如@override）、CLASS（自定义注解.例如AOP)和RUNTIME（存在于运行时，spring框架中常用）</li><li>Target：指定注解可以应用于Java元素类型，METHOD或者FIELD。</li><li>Inherited：指定注解类型会被子类继承。</li><li>@Documented：指示将次注解包含在javaDoc中。</li></ol></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>JavaLearn(1)</title>
     <link href="/2024/05/14/JavaLearning514/"/>
     <url>/2024/05/14/JavaLearning514/</url>
