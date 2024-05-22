@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="测试测试用例 测试用例是软件测试领域中的一个基本概念，为了验证软件应用程序的某个特定功能或者特性是否按照要求正常工作的一组测试步骤、预期结果和测试条件的相应描述。通常包括以下几个关键部分：测试用例ID、测试用例标题、描述、前置条件、测试步骤、测试数据、预期结果、实际结果和测试结果和备注等等信息。 测试用例的设计方法：黑盒测试和白盒测试。 黑盒测试（关注于软件的功能性需求，不考虑内部实现细节）：等价">
+    <meta name="description" content="乐观锁和悲观锁悲观锁：认为多线程安全问题一定会发生。所以在操作数据时先加锁。应用于写操作频繁的场景。 乐观锁：认为多线程安全问题不一定会发生。所以在草所数据时不加锁，直到数据更新后进行判断该时间段中数据是否发生变化。应用于读操作频繁的场景下。有版本号法， 版本号法：给原数据库表添加一个字段version，更新时查询version的值，执行更新时在where语句后添加version判断是否为更新前的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="测试">
-<meta property="og:url" content="http://example.com/2024/05/21/%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:title" content="JavaLearning522">
+<meta property="og:url" content="http://example.com/2024/05/22/JavaLearning522/index.html">
 <meta property="og:site_name" content="JokKerLi">
-<meta property="og:description" content="测试测试用例 测试用例是软件测试领域中的一个基本概念，为了验证软件应用程序的某个特定功能或者特性是否按照要求正常工作的一组测试步骤、预期结果和测试条件的相应描述。通常包括以下几个关键部分：测试用例ID、测试用例标题、描述、前置条件、测试步骤、测试数据、预期结果、实际结果和测试结果和备注等等信息。 测试用例的设计方法：黑盒测试和白盒测试。 黑盒测试（关注于软件的功能性需求，不考虑内部实现细节）：等价">
+<meta property="og:description" content="乐观锁和悲观锁悲观锁：认为多线程安全问题一定会发生。所以在操作数据时先加锁。应用于写操作频繁的场景。 乐观锁：认为多线程安全问题不一定会发生。所以在草所数据时不加锁，直到数据更新后进行判断该时间段中数据是否发生变化。应用于读操作频繁的场景下。有版本号法， 版本号法：给原数据库表添加一个字段version，更新时查询version的值，执行更新时在where语句后添加version判断是否为更新前的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-05-21T05:30:22.000Z">
-<meta property="article:modified_time" content="2024-05-21T05:30:36.866Z">
+<meta property="article:published_time" content="2024-05-22T15:25:06.000Z">
+<meta property="article:modified_time" content="2024-05-22T15:25:59.422Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>测试 - JokKerLi</title>
+  <title>JavaLearning522 - JokKerLi</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -136,7 +136,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="测试"></span>
+            <span id="subtitle" data-typed-text="JavaLearning522"></span>
           
         </div>
 
@@ -147,8 +147,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-05-21 13:30" pubdate>
-          2024年5月21日 下午
+        <time datetime="2024-05-22 23:25" pubdate>
+          2024年5月22日 晚上
         </time>
       </span>
     
@@ -170,7 +170,7 @@
         
         
         
-          10 分钟
+          9 分钟
         
       </span>
     
@@ -207,78 +207,36 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">测试</h1>
+            <h1 id="seo-header">JavaLearning522</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h1><h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><ol>
-<li>测试用例是软件测试领域中的一个基本概念，为了验证软件应用程序的某个特定功能或者特性是否按照要求正常工作的一组测试步骤、预期结果和测试条件的相应描述。通常包括以下几个关键部分：测试用例ID、测试用例标题、描述、前置条件、测试步骤、测试数据、预期结果、实际结果和测试结果和备注等等信息。</li>
-<li>测试用例的设计方法：黑盒测试和白盒测试。<ol>
-<li>黑盒测试（关注于软件的功能性需求，不考虑内部实现细节）：等价类划分、边界值分析、判定表测试、状态转换测试、因果图法</li>
-<li>白盒测试（关注于程序的内部逻辑结构）：语句覆盖、判定覆盖、条件覆盖等等</li>
-</ol>
-</li>
-</ol>
-<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><p>负载测试 压力测试 故障恢复测试</p>
+                <h2 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h2><p>悲观锁：认为多线程安全问题一定会发生。所以在操作数据时先加锁。应用于写操作频繁的场景。</p>
+<p>乐观锁：认为多线程安全问题不一定会发生。所以在草所数据时不加锁，直到数据更新后进行判断该时间段中数据是否发生变化。应用于读操作频繁的场景下。有版本号法，</p>
+<p>版本号法：给原数据库表添加一个字段version，更新时查询version的值，执行更新时在where语句后添加version判断是否为更新前的version值，并且需要 <code>set version = version + 1</code>进行版本的更新。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs mysql">-- 假设我们从应用程序获取了用户数据，并且当前的版本号是1<br>SELECT id, username, email, version FROM users WHERE username = &#x27;alice&#x27;;<br>-- 返回：1, &#x27;alice&#x27;, &#x27;alice@example.com&#x27;, 1<br><br>-- 用户提交了更新邮箱地址的请求，我们尝试更新记录<br>UPDATE users SET email = &#x27;newalice@example.com&#x27;, version = version + 1 WHERE username = &#x27;alice&#x27; AND version = 1;<br></code></pre></td></tr></table></figure>
+
+<p>CAS法：compare-and-swap，是一个原子操作，依赖于底层的硬件的支持。首先有三个值，V代表内存位置的值，A代表预期的值，B代表新修改的值。基本步骤为读取当前内存地址的值V，然后V和A进行对比，一样则说明没有其他线程修改当前值，则该线程进行修改。尽管CAS提供了一种搞笑的方式实现无锁方式，但存在以下几种问题。</p>
 <ol>
-<li>Jmeter工具的使用<ol>
-<li>创建线程组：可以设置线程数量，持续时间，循环次数（也就是每个线程调用的次数）</li>
-<li>创建采样：例如可以创建HTTP请求，设置对应的协议，主机号，端口号，方法类型，路径，请求编码类型，参数</li>
-<li>创建断言：可以根据对请求的相应或者参数进行断言的校验，校验的模式一般有包括，匹配，相等啥的，跟Java代码层面上的Assert类大致一致</li>
-<li>创建前置&#x2F;后置处理器：</li>
-<li>添加配置文件：测试用例的参数值肯定不是固定为一个值的，所以可以通过将要查的参数值存储在类似的csv文件中。</li>
-<li>创建监视器：创建察看结果树可以查看每次请求是否成功及其相应结果。同时可以创建对应的聚合结果，可以分析聚合结果，查看平均响应时间、错误率、吞吐量等等</li>
+<li>ABA问题：一个值A从到修改为B，再修改为A，前后虽然一致，但中间发生了修改操作。</li>
+<li>自旋问题：进行CAS时会使用do while进行判断，失败即会进行自旋，重复CAS操作直到成功，可能会CPU资源的消耗。</li>
+<li>只能保证单个变量的原子操作：</li>
 </ol>
-</li>
-<li>例子：为了测试MySQL索引的好处，我创建了一个表，表中有十几万条数据，表的列有id，o-id，create-time，然后执行SQL查询时根据u-id进行查询并根据create-time进行排序，o-id又是不规则的，再没加索引之前，每次查询就都是全表查询，线程组是1000时，csv有差不错一万条数据，然后的出来的聚合结果分析吞吐量20左右。最大的线程相应时间花了50s左右。然后创建联合索引（o-id，create-time）之后吞吐量达到1000左右，总时间花了不到1s。</li>
-<li>项目中用了jmeter去测试库存超卖的问题，主要是为了去模拟高并发的情况。</li>
-</ol>
-<h2 id="测试自动化"><a href="#测试自动化" class="headerlink" title="测试自动化"></a>测试自动化</h2><ol>
-<li><p>测试自动化：使用特定的工具和脚本自动执行测试用例，为了提高测试效率，测试覆盖率和准确率。</p>
-</li>
-<li><p>步骤：</p>
+<p>在Java中的concurrent包中提供了很多的原子操作的类，例如AtomicInteger，其底层就是采用了CAS原理。提供了一种线程安全的方式来操作单个<code>int</code>值，无需使用<code>synchronized</code>关键字。这使得它在高并发环境下比锁有更好的性能。常用的方法有get、set、getAndSet、compareAndSet等方法。</p>
+<h2 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h2><p>首先reentranLock是concurrent提供的一个类，相比于synchronized提供了更多的锁操作。例如可以尝试获取锁tryLock()、获取锁时可中断等。</p>
+<p>其底层原理是一个同步组件AQS，abstractQueueSynchronizer。其实现类为Sync，有具体分为安全的FairSync和非安全的NoFairSync。默认是非安全的。</p>
+<p>NoFairSync.lock方法：</p>
+<p>调用lock方法实际上是调用了同步组件的lock方法。获取锁的过程也是通过CAS进行判断的。获取锁成功后会将state转换为1，然后标识当前锁的线程。然后下次获取锁时，如果获取失败的话就会调用acquire方法，该方法会调用tryacquire方法，再次尝试获取锁，比较state的值是否为0，否的话则比较是否为当前线程，是的话就表示可以重入。如果都不成功则tryacquire方法会返回false，将当前进程 进入<strong>acquireQueued()</strong> 流程。也就是基于CLH队列的抢占模式。在此之间会调用addWaiter方法创建一个节点或者初始化队列。然后将其挂起。</p>
+<p>NoFairSync.unclock方法：</p>
 <ol>
-<li>需求分析：评估哪些测试用例适合自动化，如高风险、高价值以及重复执行的测试用例。</li>
-<li>选则测试的工具：</li>
-<li>设置测试策略和计划：</li>
-<li>设置测试环境：</li>
-<li>自动化测试用例设计：</li>
-<li>编写测试脚本：</li>
-<li>执行测试：<br>结果分析：</li>
+<li>调用 <strong>unlock()</strong> 方法，其实是直接调用 <strong>AbstractQueuedSynchronizer.release()</strong> 操作。</li>
+<li>进入 <strong>release()</strong> 方法，内部先尝试 <strong>tryRelease()</strong> 操作,主要是去除锁的独占线程，然后将状态减一，这里减一主要是考虑到可重入锁可能自身会多次占用锁，只有当状态变成0，才表示完全释放了锁。</li>
+<li>如果 <strong>tryRelease</strong> 成功，则将CHL队列的头节点的状态设置为0，然后唤醒下一个非取消的节点线程。</li>
+<li>一旦下一个节点的线程被唤醒，被唤醒的线程就会进入 <strong>acquireQueued()</strong> 代码流程中，去获取锁。</li>
 </ol>
-</li>
-<li><p>自动化框架搭建流程：</p>
-<ol>
-<li>模块化设计</li>
-<li>日志记录</li>
-<li>数据驱动</li>
-<li>缺陷报告</li>
-<li>持续继承</li>
-<li>兼容性测试</li>
-</ol>
-</li>
-</ol>
-<h2 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI&#x2F;CD"></a>CI&#x2F;CD</h2><ol>
-<li>CI：持续集成的意思，开发团队成员经常将代码变更集成到共享仓库中，每次集成都通过自动化构建来验证，以便尽快发现集成错误。版本控制：GIT，自动化构建和测试：Jenkins。</li>
-<li>CD：持续部署的意思，在持续集成的基础上，自动化将代码变更部署到生产环境的过程。</li>
-</ol>
-<h2 id="测试的分类"><a href="#测试的分类" class="headerlink" title="测试的分类"></a>测试的分类</h2><ol>
-<li>按开发过程分：<ol>
-<li>单元测试：对软件的组成单位即模块进行测试，是白盒测试。</li>
-<li>集成测试：将程序模块采用适当的集成策略组装起来，对系统的接口及集成后的功能进行正确性检测的测试性工作，检查软件的单位之间的接口是否正确。</li>
-<li>系统测试：整体的一个测试。</li>
-</ol>
-</li>
-<li>按测试对象分：<ol>
-<li>性能测试：</li>
-<li>安全测试：</li>
-<li>兼容性测试：</li>
-<li>文档测试：</li>
-<li>界面测试：</li>
-</ol>
-</li>
-</ol>
+<p>AQS：有一个state用于维持所的状态，有一个exclusiveThread用于指向当前持有锁的线程，有一个Head和tail的Node节点，用于维护等待队列。Node节点有前后指针，形成一个双向链表。</p>
+<p>引用：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/517749666">深入浅出ReentrantLock(可重入锁) - 知乎 (zhihu.com)</a></p>
 
                 
               </div>
@@ -296,8 +254,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>测试</div>
-      <div>http://example.com/2024/05/21/测试/</div>
+      <div>JavaLearning522</div>
+      <div>http://example.com/2024/05/22/JavaLearning522/</div>
     </div>
     <div class="license-meta">
       
@@ -309,7 +267,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年5月21日</div>
+          <div>2024年5月22日</div>
         </div>
       
       
@@ -341,18 +299,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/05/22/Redission%E7%9A%84%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="Redission的深入学习">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Redission的深入学习</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/05/20/rookieIM/%E6%B5%8B%E8%AF%95/" title="">
-                        <span class="hidden-mobile"></span>
+                      <a href="/2024/05/22/Redission%E7%9A%84%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/" title="Redission的深入学习">
+                        <span class="hidden-mobile">Redission的深入学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
