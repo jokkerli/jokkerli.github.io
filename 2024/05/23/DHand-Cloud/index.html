@@ -16,17 +16,20 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="DHand项目Search模块ES的常规使用 ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。 基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。 查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理查">
+    <meta name="description" content="DHand项目Search模块 ES的常规使用 ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。 基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。 查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DHand-Cloud">
 <meta property="og:url" content="http://example.com/2024/05/23/DHand-Cloud/index.html">
 <meta property="og:site_name" content="JokKerLi">
-<meta property="og:description" content="DHand项目Search模块ES的常规使用 ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。 基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。 查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理查">
+<meta property="og:description" content="DHand项目Search模块 ES的常规使用 ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。 基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。 查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2024/05/23/DHand-Cloud/Search%E6%A8%A1%E5%9D%97.png">
+<meta property="og:image" content="http://example.com/2024/05/23/DHand-Cloud/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97.png">
 <meta property="article:published_time" content="2024-05-23T14:02:13.000Z">
-<meta property="article:modified_time" content="2024-05-23T14:03:20.922Z">
+<meta property="article:modified_time" content="2024-05-23T14:40:14.351Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/05/23/DHand-Cloud/Search%E6%A8%A1%E5%9D%97.png">
   
   
   
@@ -159,7 +162,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          2.7k 字
         
       </span>
     
@@ -170,7 +173,7 @@
         
         
         
-          14 分钟
+          23 分钟
         
       </span>
     
@@ -212,7 +215,8 @@
             
               <div class="markdown-body">
                 
-                <h1 id="DHand项目"><a href="#DHand项目" class="headerlink" title="DHand项目"></a>DHand项目</h1><h2 id="Search模块"><a href="#Search模块" class="headerlink" title="Search模块"></a>Search模块</h2><h3 id="ES的常规使用"><a href="#ES的常规使用" class="headerlink" title="ES的常规使用"></a>ES的常规使用</h3><ol>
+                <h1 id="DHand项目"><a href="#DHand项目" class="headerlink" title="DHand项目"></a>DHand项目</h1><h2 id="Search模块"><a href="#Search模块" class="headerlink" title="Search模块"></a>Search模块</h2><p><img src="/2024/05/23/DHand-Cloud/Search%E6%A8%A1%E5%9D%97.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="ES的常规使用"><a href="#ES的常规使用" class="headerlink" title="ES的常规使用"></a>ES的常规使用</h3><ol>
 <li>ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。</li>
 <li>基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。</li>
 <li>查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理查询（geo）、复合查询（算分函数查询、布尔查询【must、should、must_not、filter】。</li>
@@ -273,7 +277,12 @@
 <li>定时任务：创建定时任务（cron jobs）或使用调度工具（quartz）来定期同步MySQL和ES之间的数据。可能不适合实时搜索的需求，但对于不需要实时索引的场景是有效的。</li>
 <li>使用RabbitMQ进行同步：在对数据库书籍表进行增删改的操作添加发送消息到MQ的步骤。发送消息到使用topic交换机，topic交换机绑定两个队列，一个用于增改，一个用于删除。再添加消费者（使用@rabbitListener）去监听队列。</li>
 </ol>
-<h2 id="Auth模块"><a href="#Auth模块" class="headerlink" title="Auth模块"></a>Auth模块</h2><h2 id="订单模块"><a href="#订单模块" class="headerlink" title="订单模块"></a>订单模块</h2><h2 id="IM模块"><a href="#IM模块" class="headerlink" title="IM模块"></a>IM模块</h2>
+<h2 id="Auth模块"><a href="#Auth模块" class="headerlink" title="Auth模块"></a>Auth模块</h2><h2 id="订单模块"><a href="#订单模块" class="headerlink" title="订单模块"></a>订单模块</h2><p><img src="/2024/05/23/DHand-Cloud/%E8%AE%A2%E5%8D%95%E6%A8%A1%E5%9D%97.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="订单确认"><a href="#订单确认" class="headerlink" title="订单确认"></a>订单确认</h3><p>首先，订单提交涉及了多个步骤，第一点，你首先要知道买了什么东西，第二，你要知道用户的收货地址。先分析第一点，我这个校园二手交易平台没有提供购物车的功能，所以就只有立即购买的按钮，同时也就只会购买一件商品。就需要通过商品id去数据库查询商品的相关信息。第二点，我这个项目的活动范围是一个校园，所以用户的收获地址和其他网购APP还不太一样，只支持校园+园区或者楼栋号+宿舍号这种方式来填写收获地址。所以就需要获取用户的id去数据库查询用户相关信息，这里两部分的信息都需要用到openFeign去请求，因为用户模块、商品模块和订单模块都是不同的微服务模块。还有第三点，就是为了防止订单重复提交我还使用了redis生成一个唯一令牌的操作。这三个部分的操作集合起来这个订单确认业务就太耗时间了，所以为了减少时间我就采用了CompleteFurture的方式异步执行这三个任务，并行执行提高效率，提高相应速率。同时也提供了失败异常处理的机制。最后调用了join方法等待三个任务全部完成之后才会返回结果。</p>
+<h3 id="订单提交"><a href="#订单提交" class="headerlink" title="订单提交"></a>订单提交</h3><p>订单确认之后，就可以点击提交按钮，首先进行订单是否重复提交的判断，主要是通过redis和lua脚本来实现的。在订单确认功能那里，设置了一个唯一令牌，第一次提交时查询到了这个令牌，之后删除，第二次再次提交，查询不到对应的令牌，就不可继续。这样就防止了订单的重复提交。但是这个操作是两阶段的，也就是查询和删除，会有线程不安全的情况，所以就使用了lua脚本确保操作的原子性。然后要确保在订单确认和订单提交这一过程中订单的相关信息的校验，校验的信息包含商品是不是卖完了，商品的价格是不是发生了变化。这一部分使用了fegin远程调用获取了商品的信息和使用了java的流模式和Assert断言使得校验更加方便。如果校验成功的话则进行校验库存和锁定库存。最后生成订单。设置订单为未支付状态，并提供了订单超时未支付取消的操作，主要是通过MQ实现的，</p>
+<h3 id="订单支付"><a href="#订单支付" class="headerlink" title="订单支付"></a>订单支付</h3><p>订单支付时需要使用分布式锁来确保订单重复支付，项目中使用的是redission锁来实现的。键值是订单的编号。订单支付是采用余额支付的形式，扣减库存和更新订单状态。</p>
+<h3 id="订单超时取消"><a href="#订单超时取消" class="headerlink" title="订单超时取消"></a>订单超时取消</h3><p>首先，订单提交后一般会有一个时间，在这个时间未支付则会被视为取消订单。这种超时取消的业务一般的实现方式有定时任务调度，延迟队列等。延迟队列就是消息在队列中过一段时间在被消费掉。在项目里头我使用了RabbitMQ，本质上RabbitMQ是不支持延迟队列的，但使用了死信队列来实现这种类似的延迟队列。死信队列就是一个队列的信息得不到消费，一般有以下几种情况。队列没有消费者，一段时间后超时未消费。还有就是队列的消息过多，导致消息进不去队列，丢失了。项目里头主要用了第一种。首先需要创建一个普通的交换机和一个队列，绑定在一起，生产者往这交换机发送信息。这个队列需要设置一个参数TTL。而且这个队列不允许设置消费者。然后要创建一个死信交换机和死信队列。前面那个普通的队列和这个死信交换机进行绑定，设置消息超时就发送到这个死信交换机中。然后这个死信队列设置消费者去取消订单。</p>
+<h2 id="IM模块"><a href="#IM模块" class="headerlink" title="IM模块"></a>IM模块</h2>
                 
               </div>
             
