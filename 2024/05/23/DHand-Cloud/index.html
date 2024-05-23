@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="DHand项目Search模块ES的常规使用 ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。 基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。 查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DHand-Cloud">
+<meta property="og:url" content="http://example.com/2024/05/23/DHand-Cloud/index.html">
+<meta property="og:site_name" content="JokKerLi">
+<meta property="og:description" content="DHand项目Search模块ES的常规使用 ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。 基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。 查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理查">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-05-23T14:02:13.000Z">
+<meta property="article:modified_time" content="2024-05-23T14:03:20.922Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>DHand-Cloud - JokKerLi</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>JokKerLi</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="DHand-Cloud"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-23 22:02" pubdate>
+          2024年5月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          14 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">DHand-Cloud</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="DHand项目"><a href="#DHand项目" class="headerlink" title="DHand项目"></a>DHand项目</h1><h2 id="Search模块"><a href="#Search模块" class="headerlink" title="Search模块"></a>Search模块</h2><h3 id="ES的常规使用"><a href="#ES的常规使用" class="headerlink" title="ES的常规使用"></a>ES的常规使用</h3><ol>
+<li>ES是一个开源的搜索和分析引擎。常用于全文搜索、结构化搜索、分析。主要有索引、文档、字段、映射这些基本的概念。</li>
+<li>基本的增删改操作：对索引、文档进行一些增删改操作，指令分别为POST、PUT、DEL等。</li>
+<li>查询操作（query）：查询是ES的一个重要功能。查询可以分类为全文检索（match、mutil_match)、精准查询（term、range）、地理查询（geo）、复合查询（算分函数查询、布尔查询【must、should、must_not、filter】。</li>
+<li>处理查询结果：对查询结果的处理有排序、分页、高亮三个常见的操作。排序（sort）默认会使用自带的score进行排序，也可以自定义排序。分页（from、size）阻止查询id大于10000的文档。高亮（highlight）则是通过添加标签然后网页对标签添加css样式。</li>
+<li>聚合（aggregation）：常分为三类，桶（bucket）、度量（metric）和管道（pipeline）。桶聚合用来对文档做分组，度量则是用以计算一些值，如最大值、最小值、平均值等。管道则是其他聚合结果为基础做聚合。</li>
+</ol>
+<h3 id="Springboot项目整合ES"><a href="#Springboot项目整合ES" class="headerlink" title="Springboot项目整合ES"></a>Springboot项目整合ES</h3><ol>
+<li>导入相关pom依赖</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.springframework.boot<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>spring-boot-starter-data-elasticsearch<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置yml文件</li>
+</ol>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">spring:</span><br>  <span class="hljs-attr">data:</span><br>    <span class="hljs-attr">elasticsearch:</span><br>      <span class="hljs-attr">repositories:</span><br>        <span class="hljs-attr">enabled:</span> <span class="hljs-literal">true</span><br>  <span class="hljs-attr">elasticsearch:</span><br>    <span class="hljs-attr">uris:</span> <span class="hljs-string">localhost:9200</span><br></code></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>创建实体类和仓库接口</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Document(indexName = &quot;blog&quot;, type = &quot;article&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Article</span> &#123;<br>    <span class="hljs-meta">@Id</span><br>    <span class="hljs-keyword">private</span> String id;<br>    <span class="hljs-keyword">private</span> String title;<br>    <span class="hljs-keyword">private</span> String content;<br>    <span class="hljs-comment">// 省略getter和setter</span><br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">ArticleRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ElasticsearchRepository</span>&lt;Article, String&gt; &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>创建服务层</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Service</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ArticleService</span> &#123;<br><br>    <span class="hljs-meta">@Autowired</span><br>    <span class="hljs-keyword">private</span> ArticleRepository articleRepository;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">saveArticle</span><span class="hljs-params">(Article article)</span> &#123;<br>        articleRepository.save(article);<br>    &#125;<br><br>    <span class="hljs-comment">// 添加更多服务方法</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>controller层</li>
+</ol>
+<h3 id="主要数据库的设计"><a href="#主要数据库的设计" class="headerlink" title="主要数据库的设计"></a>主要数据库的设计</h3><ol>
+<li>二手书数据库表：书籍ID、书名、作者、出版社、ISBN、出版日期、分类（小说、教育、科技）、价格、书籍状态（全新、几乎全新、轻微磨损、少量笔记）、备注。</li>
+<li>二手书ES索引：<ol>
+<li>用于搜索框的字段【全文检索mutil-match】：书名（textword）、作者（keyword）、出版社（textword）、ISBN（keyword）</li>
+<li>用于精确查询【精确查询term】：科别（工科、理科、管理科、其他等） 类别（小说、漫画、教科书、其他等）</li>
+<li>用于范围查询【范围查询range】：价格</li>
+</ol>
+</li>
+</ol>
+<h3 id="导入所有数据库数据到ES"><a href="#导入所有数据库数据到ES" class="headerlink" title="导入所有数据库数据到ES"></a>导入所有数据库数据到ES</h3><p>查询数据库的信息，使用Mybatis编写SQL语句，使用resultMap将结果映射成ES的实体。然后调用Dao层提供的saveAll方法。大致代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">importAll</span><span class="hljs-params">()</span> &#123;<br>        List&lt;EsProduct&gt; esProductList = productDao.getAllEsProductList(<span class="hljs-literal">null</span>);<br>        Iterable&lt;EsProduct&gt; esProductIterable = productRepository.saveAll(esProductList);<br>        Iterator&lt;EsProduct&gt; iterator = esProductIterable.iterator();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">result</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">while</span> (iterator.hasNext()) &#123;<br>            result++;<br>            iterator.next();<br>        &#125;<br>        <span class="hljs-keyword">return</span> result;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="增加、删除、修改ES的文档"><a href="#增加、删除、修改ES的文档" class="headerlink" title="增加、删除、修改ES的文档"></a>增加、删除、修改ES的文档</h3><p>增加：根据id查询数据库得到ES的实体后执行DAO层save方法。</p>
+<p>删除：直接根据id执行DAO的delete方法。</p>
+<h3 id="简单搜索"><a href="#简单搜索" class="headerlink" title="简单搜索"></a>简单搜索</h3><p>只根据搜索框的内容进行搜索,传入keyword和pageNum和pageSize</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Page&lt;EsProduct&gt; <span class="hljs-title function_">search</span><span class="hljs-params">(String keyword, Integer pageNum, Integer pageSize)</span> &#123;<br>        <span class="hljs-type">Pageable</span> <span class="hljs-variable">pageable</span> <span class="hljs-operator">=</span> PageRequest.of(pageNum, pageSize);<br>        <span class="hljs-keyword">return</span> productRepository.findByNameOrSubTitleOrKeywords(keyword, keyword, keyword, pageable);<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="综合搜索"><a href="#综合搜索" class="headerlink" title="综合搜索"></a>综合搜索</h3><p>在简单搜索的基础上，添加排序、筛选功能。排序则是可以根据默认（得分）、时间（最新）、价格。筛选则可以根据科别和类别进行筛选。</p>
+<p>大致步骤就是先创建一个nativeSearchQueryBuilder，然后先分页，再过滤，再文件检索、再排序。最后调用build方法得到NativeSearchQuery。最后执行search方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> Page&lt;EsProduct&gt; <span class="hljs-title function_">search</span><span class="hljs-params">(String keyword, Long brandId, Long productCategoryId,</span><br><span class="hljs-params">                                  Integer pageNum, Integer pageSize,Integer sort)</span> &#123;<br>        <span class="hljs-type">Pageable</span> <span class="hljs-variable">pageable</span> <span class="hljs-operator">=</span> PageRequest.of(pageNum, pageSize);<br>        <span class="hljs-type">NativeSearchQueryBuilder</span> <span class="hljs-variable">nativeSearchQueryBuilder</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">NativeSearchQueryBuilder</span>();<br>        <span class="hljs-comment">//分页</span><br>        nativeSearchQueryBuilder.withPageable(pageable);<br>        <span class="hljs-comment">//过滤</span><br>        <span class="hljs-keyword">if</span> (brandId != <span class="hljs-literal">null</span> || productCategoryId != <span class="hljs-literal">null</span>) &#123;<br>            <span class="hljs-type">BoolQueryBuilder</span> <span class="hljs-variable">boolQueryBuilder</span> <span class="hljs-operator">=</span> QueryBuilders.boolQuery();<br>            <span class="hljs-keyword">if</span> (brandId != <span class="hljs-literal">null</span>) &#123;<br>                boolQueryBuilder.must(QueryBuilders.termQuery(<span class="hljs-string">&quot;brandId&quot;</span>, brandId));<br>            &#125;<br>            <span class="hljs-keyword">if</span> (productCategoryId != <span class="hljs-literal">null</span>) &#123;<br>                boolQueryBuilder.must(QueryBuilders.termQuery(<span class="hljs-string">&quot;productCategoryId&quot;</span>, productCategoryId));<br>            &#125;<br>            nativeSearchQueryBuilder.withFilter(boolQueryBuilder);<br>        &#125;<br>        <span class="hljs-comment">//搜索</span><br>        <span class="hljs-keyword">if</span> (StringUtils.isEmpty(keyword)) &#123;<br>            nativeSearchQueryBuilder.withQuery(QueryBuilders.matchAllQuery());<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            List&lt;FunctionScoreQueryBuilder.FilterFunctionBuilder&gt; filterFunctionBuilders = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>            filterFunctionBuilders.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FunctionScoreQueryBuilder</span>.FilterFunctionBuilder(QueryBuilders.matchQuery(<span class="hljs-string">&quot;name&quot;</span>, keyword),<br>                    ScoreFunctionBuilders.weightFactorFunction(<span class="hljs-number">10</span>)));<br>            filterFunctionBuilders.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FunctionScoreQueryBuilder</span>.FilterFunctionBuilder(QueryBuilders.matchQuery(<span class="hljs-string">&quot;subTitle&quot;</span>, keyword),<br>                    ScoreFunctionBuilders.weightFactorFunction(<span class="hljs-number">5</span>)));<br>            filterFunctionBuilders.add(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FunctionScoreQueryBuilder</span>.FilterFunctionBuilder(QueryBuilders.matchQuery(<span class="hljs-string">&quot;keywords&quot;</span>, keyword),<br>                    ScoreFunctionBuilders.weightFactorFunction(<span class="hljs-number">2</span>)));<br>            FunctionScoreQueryBuilder.FilterFunctionBuilder[] builders = <span class="hljs-keyword">new</span> <span class="hljs-title class_">FunctionScoreQueryBuilder</span>.FilterFunctionBuilder[filterFunctionBuilders.size()];<br>            filterFunctionBuilders.toArray(builders);<br>            <span class="hljs-type">FunctionScoreQueryBuilder</span> <span class="hljs-variable">functionScoreQueryBuilder</span> <span class="hljs-operator">=</span> QueryBuilders.functionScoreQuery(builders)<br>                    .scoreMode(FunctionScoreQuery.ScoreMode.SUM)<br>                    .setMinScore(<span class="hljs-number">2</span>);<br>            nativeSearchQueryBuilder.withQuery(functionScoreQueryBuilder);<br>        &#125;<br>        <span class="hljs-comment">//排序</span><br>        <span class="hljs-keyword">if</span>(sort==<span class="hljs-number">1</span>)&#123;<br>            <span class="hljs-comment">//按新品从新到旧</span><br>            nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort(<span class="hljs-string">&quot;id&quot;</span>).order(SortOrder.DESC));<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sort==<span class="hljs-number">2</span>)&#123;<br>            <span class="hljs-comment">//按销量从高到低</span><br>            nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort(<span class="hljs-string">&quot;sale&quot;</span>).order(SortOrder.DESC));<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sort==<span class="hljs-number">3</span>)&#123;<br>            <span class="hljs-comment">//按价格从低到高</span><br>            nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort(<span class="hljs-string">&quot;price&quot;</span>).order(SortOrder.ASC));<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(sort==<span class="hljs-number">4</span>)&#123;<br>            <span class="hljs-comment">//按价格从高到低</span><br>            nativeSearchQueryBuilder.withSort(SortBuilders.fieldSort(<span class="hljs-string">&quot;price&quot;</span>).order(SortOrder.DESC));<br>        &#125;<span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">//按相关度</span><br>            nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));<br>        &#125;<br>        nativeSearchQueryBuilder.withSort(SortBuilders.scoreSort().order(SortOrder.DESC));<br>        <span class="hljs-type">NativeSearchQuery</span> <span class="hljs-variable">searchQuery</span> <span class="hljs-operator">=</span> nativeSearchQueryBuilder.build();<br>        LOGGER.info(<span class="hljs-string">&quot;DSL:&#123;&#125;&quot;</span>, searchQuery.getQuery().toString());<br>        SearchHits&lt;EsProduct&gt; searchHits = elasticsearchRestTemplate.search(searchQuery, EsProduct.class);<br>        <span class="hljs-keyword">if</span>(searchHits.getTotalHits()&lt;=<span class="hljs-number">0</span>)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PageImpl</span>&lt;&gt;(<span class="hljs-literal">null</span>,pageable,<span class="hljs-number">0</span>);<br>        &#125;<br>        List&lt;EsProduct&gt; searchProductList = searchHits.stream().map(SearchHit::getContent).collect(Collectors.toList());<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PageImpl</span>&lt;&gt;(searchProductList,pageable,searchHits.getTotalHits());<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="为什么使用ES而不是用MySQL进行搜索"><a href="#为什么使用ES而不是用MySQL进行搜索" class="headerlink" title="为什么使用ES而不是用MySQL进行搜索"></a>为什么使用ES而不是用MySQL进行搜索</h2><ol>
+<li>首先搜索的场景一般是通过一个搜索框，还有一些给定的分类进行点击来搜索。搜索框输入对应的text，如果走MySQL就需要使用模糊查询来解决，而模糊查询是不走索引的，而会全表扫描。然后点击类别的话，维度很高，用户选择具有不确定性，复合索引遵循最左匹配原则无法生效。</li>
+</ol>
+<h3 id="ES和SQL的搭配"><a href="#ES和SQL的搭配" class="headerlink" title="ES和SQL的搭配"></a>ES和SQL的搭配</h3><p>ES做全搜索，MySQL做商品详情，增删改查功能。当MySQL数据发生变化，则需要同步到ES。</p>
+<h3 id="ES和MySQL的一致性"><a href="#ES和MySQL的一致性" class="headerlink" title="ES和MySQL的一致性"></a>ES和MySQL的一致性</h3><ol>
+<li>双写同步：在应用层同时向MySQL和ES写入数据。简单直接，但存在风险，比如写入一个系统成功而另一个系统失败时会导致数据不一致。</li>
+<li>消息队列：当数据在MySQL中被修改时，相应的事件将被发送到消息队列中，然后由一个或多个消费者处理这些事件来更新ES。</li>
+<li>定时任务：创建定时任务（cron jobs）或使用调度工具（quartz）来定期同步MySQL和ES之间的数据。可能不适合实时搜索的需求，但对于不需要实时索引的场景是有效的。</li>
+<li>使用RabbitMQ进行同步：在对数据库书籍表进行增删改的操作添加发送消息到MQ的步骤。发送消息到使用topic交换机，topic交换机绑定两个队列，一个用于增改，一个用于删除。再添加消费者（使用@rabbitListener）去监听队列。</li>
+</ol>
+<h2 id="Auth模块"><a href="#Auth模块" class="headerlink" title="Auth模块"></a>Auth模块</h2><h2 id="订单模块"><a href="#订单模块" class="headerlink" title="订单模块"></a>订单模块</h2><h2 id="IM模块"><a href="#IM模块" class="headerlink" title="IM模块"></a>IM模块</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>DHand-Cloud</div>
+      <div>http://example.com/2024/05/23/DHand-Cloud/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年5月23日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/05/22/JavaLearning522/" title="JavaLearning522">
+                        <span class="hidden-mobile">JavaLearning522</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
